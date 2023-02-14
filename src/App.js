@@ -1,7 +1,11 @@
-import Navbar from "./components/Navbar";
+import Events from "./components/Content/Events";
+import Slider from "./components/Content/Slider";
 function App() {
   return (
-   <Navbar />
+   <div>
+   <Slider/>
+   <Events/>
+   </div>
   );
 }
 
