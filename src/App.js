@@ -1,7 +1,14 @@
 import Navbar from "./components/Navbar";
+import Content from "./components/Body section/Content";
 function App() {
+  
   return (
-   <Navbar />
+    <header>
+<Navbar></Navbar>
+<Content/>
+    </header>
+    
+   
   );
 }
 
