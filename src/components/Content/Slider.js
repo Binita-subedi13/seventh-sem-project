@@ -5,14 +5,14 @@ import { Paper } from "@mui/material";
 
 function Slider(props) {
   const items = [
-    <img style={{height:"400px",width:"100%",paddingTop:"2px"}}  src="/slider.jpg" />,
-    <img style={{height:"400px",width:"100%"}}  src="/slider.jpg" />,
-    <img style={{height:"400px",width:"100%"}}  src="/slider.jpg" />,
-    <img style={{height:"400px",width:"100%"}}  src="/slider.jpg" />,
+    <img style={{height:"600px",width:"100%",paddingTop:"2px"}}  src="/slider.jpg" alt="image" />,
+    <img style={{height:"600px",width:"100%"}}  src="/slider.jpg" alt="image" />,
+    <img style={{height:"600px",width:"100%"}}  src="/slider.jpg"  alt="image"/>,
+    <img style={{height:"600px",width:"100%"}}  src="/slider.jpg" alt="image" />,
   ];
 
   return (
-    <Carousel>
+    <Carousel className="mt-4 rounded-sm">
       {items.map((item, i) => (
         < Item key={i} item={item} style={{height:"400px",width:"100%"}} />
       ))}
