@@ -1,15 +1,24 @@
-import Navbar from "./components/Navbar";
-import Content from "./components/Body section/Content";
+
+import Profile from "./components/Body section/Profile";
+/* import Events from "./components/Content/Events"; */
+import Slider from "./components/Content/Slider";
 function App() {
   
   return (
-    <header>
-<Navbar></Navbar>
-<Content/>
+
+<header>
+<Slider/>
+<Profile/>
     </header>
     
+     
    
   );
 }
 
 export default App;
+
+/*<div>
+   <Slider/>
+   <Events/>
+   </div>  */

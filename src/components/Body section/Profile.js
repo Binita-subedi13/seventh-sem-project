@@ -1,10 +1,10 @@
 import React from 'react';
-import Event from "./Event";
+import ProfileCard from "./ProfileCard";
 import eventimg from '../Assets/Photos/eventImg.jpg';
 import eventimg1 from '../Assets/Photos/event-photo2.jpg';
 import eventimg2 from '../Assets/Photos/event-photo3.jpg';
 
-function Content(){
+function Profile(){
 
     const eventImages = [
         {image:{eventimg},
@@ -23,11 +23,11 @@ function Content(){
       ] 
     return (
         <div className=" w-10/12 m-auto flex flex-row mt-10 gap-20">
-            <Event img={eventImages[0].image} text={eventImages[0].text}></Event>
-            <Event img={eventImages[1].image} text={eventImages[1].text}/>
-            <Event img={eventImages[2].image} text={eventImages[2].text}/>
+            <ProfileCard img={eventImages[0].image} text={eventImages[0].text}></ProfileCard>
+            <ProfileCard img={eventImages[1].image} text={eventImages[1].text}/>
+            <ProfileCard img={eventImages[2].image} text={eventImages[2].text}/>
         </div>
     )
 }
 
-export default Content;
+export default Profile;
