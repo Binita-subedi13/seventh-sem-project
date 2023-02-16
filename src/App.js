@@ -1,6 +1,5 @@
 
-import Profile from "./components/Body section/Profile";
-import Demo from "./components/Content/Demo";
+import EventInCards from "./components/Content/EventInCards";
 import Events from "./components/Content/Events"; 
 import Slider from "./components/Content/Slider";
 function App() {
@@ -8,9 +7,9 @@ function App() {
   return (
 
 <div><Slider/>
-<Profile/>
+
 <Events></Events>
-<Demo/>
+<EventInCards/>
 </div>
 
     
