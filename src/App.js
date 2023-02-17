@@ -1,18 +1,19 @@
 
-import Profile from "./components/Body section/Profile";
-import Demo from "./components/Content/Demo";
+import EventInCards from "./components/Content/EventInCards";
 import Events from "./components/Content/Events"; 
 import Slider from "./components/Content/Slider";
-import Banner from "./components/Content/Banner";
+import Banner from "./components/Content/InfoSection/Banner";
+import Wave from "./components/Content/Wave";
 function App() {
   
   return (
 
 <div><Slider/>
-<Profile/>
-<Events></Events>
 <Banner/>
-<Demo/>
+<Wave/>
+<EventInCards/>
+<Events></Events>
+
 </div>
 
     
