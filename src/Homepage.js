@@ -5,7 +5,6 @@ import Slider from "./components/Content/Slider";
 import Banner from "./components/Content/InfoSection/Banner";
 import Wave from "./components/Content/Wave";
 import Prop from "./components/Prop";
-import SingleEventPage from "./Pages/Programs";
 
 
 function Homepage() {
@@ -18,7 +17,6 @@ function Homepage() {
 <Events></Events>
 {/* <Prop></Prop> */}
 
-<SingleEventPage/>
     </div>
   )
 }

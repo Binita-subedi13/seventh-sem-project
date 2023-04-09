@@ -8,7 +8,7 @@ function Navbar(){
                 <li className="home-components"> 
                 <Link to="/">Home</Link></li>
                 <li className="home-components">
-                <Link to="/programs">Programs</Link></li>
+                <Link to="/programs">Services</Link></li>
                 <li className="home-components">
                 <Link to="/about">About</Link></li>
                 <li className="home-components">
@@ -20,7 +20,7 @@ function Navbar(){
                 </ul>
             </div>
             <div className="px-7 rounded-full py-3 bg-orange-500 hover:bg-orange-400 mr-3 text-white text-lg tracking-wider transition duration-400">
-                <button>Donate</button>
+                <button><Link to="/donate">Donate</Link></button>
                 </div>
         </div>
     )
