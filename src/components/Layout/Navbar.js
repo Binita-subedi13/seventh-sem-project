@@ -1,4 +1,9 @@
 import { Link } from 'react-router-dom';
+import {
+    
+    Person
+    
+  } from "@mui/icons-material";
 function Navbar(){
     return(
         <div className="flex bg-lime-900 mx-12 mt-4 gap-40 rounded-full justify-center items-center box-border">
@@ -19,9 +24,15 @@ function Navbar(){
                 <Link to="/causes">Causes</Link></li>
                 </ul>
             </div>
+            <div className='flex items-center justify-center gap-6'>
+            <Link to="/login"><Person fontSize='large' className="hover:text-lime-400  text-white cursor-pointer" /></Link>
+            
+                
             <div className="px-7 rounded-full py-3 bg-orange-500 hover:bg-orange-400 mr-3 text-white text-lg tracking-wider transition duration-400">
                 <button><Link to="/donate">Donate</Link></button>
                 </div>
+            </div>
+           
         </div>
     )
 }

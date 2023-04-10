@@ -7,6 +7,8 @@ import Blog from './Pages/Blog';
 import Causes from './Pages/Causes';
 import ContactUs from './Pages/ContactUs';
 import DonationPage from './Pages/DonationForm';
+import Signin from './Pages/login/Signin'
+import Register from './Pages/login/register'
 
 function App() {
   
@@ -19,6 +21,9 @@ function App() {
       <Route path="/contactus" element={<ContactUs/>}/>
       <Route path="/causes" element={<Causes/>}/>
       <Route path="/donate" element={<DonationPage/>}/>
+      <Route path="/login" element={<Signin/>}/>
+      <Route path="/register" element={<Register/>}/>
+
 
 
     </Routes>
