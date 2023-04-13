@@ -1,97 +1,53 @@
-import React, { useState } from "react";
-import axios from "axios";
+import { Button, ButtonGroup, Card, TextField } from '@mui/material';
+import * as React from 'react';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
-function DonationPage() {
-  const [amount, setAmount] = useState(0);
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post("/donate", {
-        amount,
-        firstName,
-        lastName,
-        email,
-      });
-      console.log(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
+export default function DonationPage() {
   return (
-    <div className="flex justify-center items-center h-screen  bg-gray-100">
-      <form onSubmit={handleSubmit} className="bg-white p-6 w-8/12 rounded-lg">
-        <h2 className="text-2xl font-bold mb-4">Donate</h2>
-        <div className="mb-4">
-          <label
-            htmlFor="amount"
-            className="block text-gray-700 font-bold mb-2"
-          >
-            Amount
-          </label>
-          <input
-            type="number"
-            id="amount"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          />
-        </div>
-        <div className="mb-4">
-          <label
-            htmlFor="firstName"
-            className="block text-gray-700 font-bold mb-2"
-          >
-            First Name
-          </label>
-          <input
-            type="text"
-            id="firstName"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          />
-        </div>
-        <div className="mb-4">
-          <label
-            htmlFor="lastName"
-            className="block text-gray-700 font-bold mb-2"
-          >
-            Last Name
-          </label>
-          <input
-            type="text"
-            id="lastName"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          />
-        </div>
-        <div className="mb-4">
-          <label htmlFor="email" className="block text-gray-700 font-bold mb-2">
-            Email
-          </label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          />
-        </div>
-        <button
-          type="submit"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-        >
-          Donate
-        </button>
-      </form>
+   <div >
+    <Card className='pb-10  w-4/12 mx-auto my-10' >
+      <div className='space-y-7 text-center '>
+      <div className='bg-slate-100 py-4 text-xl font-medium'> Choose Amount</div>
+    <div>How much would you like to donate?</div>
+    <div>
+    <TextField className='w-4/5 focus:ring-blue-500 focus:border-blue-500 ' placeholder='Amount' />
     </div>
+    <div className='space-y-2' >
+      <div className='space-x-2' >
+    <button class="button-style">
+  Rs.100
+</button>
+    <button class="button-style">
+  Rs.500
+</button>
+    <button class="button-style">
+  Rs.1000
+</button>
+</div>
+<div className='space-x-2'>
+    <button class="button-style">
+  Rs.2000
+</button>
+    <button class="button-style">
+  Rs.2500
+</button>
+    <button class="button-style">
+  Custom Amount
+</button>
+
+</div>
+    </div>
+    <div>
+    <button class="bg-transparent bg-green-500  font-semibold text-white hover:text-green-500 hover:bg-white hover:border-green-500  w-36 h-16
+      border border-green-500 hover:border-transparent rounded text-xl ">
+  Continue <ArrowForwardIosIcon fontSize='' />
+</button>
+    </div>
+      </div>
+    
+    </Card>
+   </div>
   );
 }
-
-export default DonationPage;
