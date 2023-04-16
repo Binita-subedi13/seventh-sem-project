@@ -1,20 +1,41 @@
 import React from "react";
-import { Link } from 'react-router-dom';
-
-import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import { TextField } from "@mui/material";
 
+import { loginApi } from "./../../api/post";
+
 const Signin = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-  const myfun = () => {};
+  const [userData, setUserData] = React.useState({
+    email: "",
+    password: "",
+  });
+
+  const changeHandler = (field, value) => {
+    const newState = { ...userData };
+    newState[field] = value;
+    setUserData(newState);
+  };
+
+  const submitHandler = async (e) => {
+    try {
+      e.preventDefault();
+      console.log(userData);
+      const data = await loginApi(userData);
+      if (data) {
+        const token = data.data.token;
+        toast(`Sucessfully Log In`);
+        localStorage.setItem("token", token);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
     <>
       <div className="flex flex-row justify-center ">
-        <form onSubmit={handleSubmit(myfun)} action="">
+        <form onSubmit={submitHandler}>
           <div className="mb-6 mt-5 font-bold">SIGN IN</div>
           <div className="mb-6">
             <div>
@@ -24,21 +45,9 @@ const Signin = () => {
               id="outlined-basic"
               placeholder="Email"
               variant="outlined"
-              {...register("Email", {
-                required: {
-                  value: true,
-                  message: "Email required",
-                },
-                pattern: {
-                  value:
-                    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-                  message: "Invalid Email Address",
-                },
-              })}
+              type="email"
+              onChange={(e) => changeHandler("email", e.target.value)}
             />
-            {errors.Email && (
-              <p className="text-red-500"> {errors.Email.message} </p>
-            )}
           </div>
           <div className="mb-6">
             <div>
@@ -46,30 +55,13 @@ const Signin = () => {
             </div>
             <TextField
               id="outlined-basic"
+              type="password"
               placeholder="Password"
               variant="outlined"
-              {...register("Password", {
-                required: {
-                  value: true,
-                  message: "Password required",
-                },
-              })}
+              onChange={(e) => changeHandler("password", e.target.value)}
             />
-            {errors.Password && (
-              <p className="text-red-500"> {errors.Password.message} </p>
-            )}
           </div>
-          <div class="flex justify-between items-center mb-6">
-            <div class="form-group form-check">
-              <input
-                type="checkbox"
-                class="form-check-input h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                id=""
-              />
-              
-            </div>
-           
-          </div>
+
           <div class="text-center lg:text-left pb-5 ">
             <button
               type="submit"
@@ -80,12 +72,11 @@ const Signin = () => {
 
             <p class="text-sm font-semibold mt-2 pt-1 mb-0 ">
               Don't have an account?
-
-              <Link to="/register"> <a class="text-red-600 hover:text-red-700 focus:text-red-700 transition duration-200 ease-in-out">
+              <Link to="/register">
+                <p class="text-red-600 hover:text-red-700 transition duration-200 ">
                   Register
-                </a></Link>
-               
-              
+                </p>
+              </Link>
             </p>
           </div>
         </form>

@@ -1,45 +1,50 @@
 import React from "react";
-import { useForm } from "react-hook-form";
 import { TextField } from "@mui/material";
+import { registerApi } from "../../api/post";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Register = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-  const myfun = () => {};
+  const navigation = useNavigate();
+  const [userData, setUserData] = React.useState({
+    email: "",
+    password: "",
+    username: "",
+  });
+
+  const changeHandler = (field, value) => {
+    const newState = { ...userData };
+    newState[field] = value;
+    setUserData(newState);
+  };
+
+  const submitHandler = async (e) => {
+    try {
+      e.preventDefault();
+      console.log(userData);
+      const data = await registerApi(userData);
+      if (data) {
+        toast(`Sucessfully Register ${userData.username}`);
+        navigation("/login");
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
   return (
     <div className="flex flex-row justify-center shadow-md ">
-      <form onSubmit={handleSubmit(myfun)} action="">
+      <form onSubmit={submitHandler}>
         <div className="mb-6 mt-5 font-bold">REGISTER</div>
         <div className="mb-6">
           <div>
-            <label htmlFor="">First Name</label>
+            <label htmlFor="">Full Name</label>
           </div>
           <TextField
             id="outlined-basic"
-            placeholder="First Name"
+            placeholder="full Name"
             variant="outlined"
-            {...register("FirstName", { required: true })}
+            onChange={(e) => changeHandler("username", e.target.value)}
           />
-          {errors.FirstName && errors.FirstName.type == "required" && (
-            <p className="text-red-600">Firstname required</p>
-          )}
-        </div>
-        <div className="mb-6">
-          <div>
-            <label htmlFor="">Last Name</label>
-          </div>
-          <TextField
-            id="outlined-basic"
-            placeholder="Last Name"
-            variant="outlined"
-            {...register("LastName", { required: true })}
-          />
-          {errors.LastName && errors.LastName.type == "required" && (
-            <p className="text-red-600">Lastname required</p>
-          )}
         </div>
         <div className="mb-6">
           <div>
@@ -48,22 +53,10 @@ const Register = () => {
           <TextField
             id="outlined-basic"
             placeholder="Email"
+            type="email"
             variant="outlined"
-            {...register("Email", {
-              required: {
-                value: true,
-                message: "Email required",
-              },
-              pattern: {
-                value:
-                  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-                message: "Invalid Email Address",
-              },
-            })}
+            onChange={(e) => changeHandler("email", e.target.value)}
           />
-          {errors.Email && (
-            <p className="text-red-500"> {errors.Email.message} </p>
-          )}
         </div>
         <div className="mb-6">
           <div>
@@ -73,20 +66,8 @@ const Register = () => {
             id="outlined-basic"
             placeholder="Password"
             variant="outlined"
-            {...register("Password", {
-              required: {
-                value: true,
-                message: "Password required",
-              },
-              minLength: {
-                value: 7,
-                message: "Password must be of atleast 7 characters",
-              },
-            })}
+            onChange={(e) => changeHandler("password", e.target.value)}
           />
-          {errors.Password && (
-            <p className="text-red-500"> {errors.Password.message} </p>
-          )}
         </div>
 
         <div class="text-center lg:text-left pb-5 ">
