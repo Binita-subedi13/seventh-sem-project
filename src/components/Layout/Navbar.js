@@ -17,11 +17,7 @@ function Navbar(){
                 <li className="home-components">
                 <Link to="/about">About</Link></li>
                 <li className="home-components">
-                <Link to="/blog">Blog</Link></li>
-                <li className="home-components">
                 <Link to="/contactus">Contact Us</Link></li>
-                <li className="home-components">
-                <Link to="/causes">Causes</Link></li>
                 </ul>
             </div>
             <div className='flex items-center justify-center gap-6'>

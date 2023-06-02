@@ -1,5 +1,6 @@
 import { width } from "@mui/system";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Events = () => {
   return (
@@ -26,7 +27,7 @@ const Events = () => {
         dolore nulla aliquip.
         <div className=" space-x-4">
           <button className="bg-orange-500 p-2 rounded-sm text text-white">
-            Donate Now
+          <Link to="/donate">Donate Now</Link>
           </button>
           <button className=" rounded-sm text text-orange-500 border-2 border-orange-500 p-2">
             View Programs

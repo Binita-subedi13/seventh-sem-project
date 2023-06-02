@@ -4,6 +4,7 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
+import { Link } from "react-router-dom";
 
 export default function MediaCard() {
   return (
@@ -23,7 +24,7 @@ export default function MediaCard() {
             </CardContent>
             <CardActions>
               <button className="bg-orange-500 p-2 border-2 border-orange-500 rounded-sm text text-white hover:bg-lime-700  hover:border-lime-700 transition duration-200">
-                Donate Now
+              <Link to="/donate">Donate Now</Link>
               </button>
             </CardActions>
           </Card>
